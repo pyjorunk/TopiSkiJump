@@ -56,7 +56,13 @@ class SkiJump:
     def y(self, x: float) -> float:
         """Return the trajectory."""
         # Work here in Step 1!
-        raise NotImplementedError()
+        y_value = np.tan(self.alpha) * x - 0.5 * (
+            1 / (self.v0 * np.cos(self.alpha)) ** 2 * EARTH_GRAVITY * x**2
+        )
+        if y_value < 1e-8 and y_value > -1e-8:
+            return 0.0
+        return y_value
+        # raise NotImplementedError()
 
     @staticmethod
     # ↑ this is the `staticmethod` decorator, whose documentation can be found
@@ -69,6 +75,7 @@ class SkiJump:
         # Create a `SkiJump` object with the specification given in the file.
         # The `dataclass` decorator adds, e.g., a constructor with keyword arguments,
         # as is used above for creating the `Hill` object.
+
         raise NotImplementedError()
 
     def landing(self, hill: Hill) -> float:
