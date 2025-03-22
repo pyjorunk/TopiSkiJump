@@ -4,6 +4,7 @@ import argparse
 from dataclasses import dataclass
 import pathlib
 import numpy as np
+import json
 
 EARTH_GRAVITY = 1.0  # [a.u.]
 """Acceleration on earth due to gravity."""
@@ -75,8 +76,12 @@ class SkiJump:
         # Create a `SkiJump` object with the specification given in the file.
         # The `dataclass` decorator adds, e.g., a constructor with keyword arguments,
         # as is used above for creating the `Hill` object.
-
-        raise NotImplementedError()
+        with open(path, "r") as file:
+            data = json.load(file)
+        v0 = data["v0"]
+        alpha = data["alpha"]
+        return SkiJump(v0, alpha)
+        # raise NotImplementedError()
 
     def landing(self, hill: Hill) -> float:
         """Returns the intersection of the trajectory and the hill."""
