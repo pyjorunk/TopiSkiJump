@@ -81,17 +81,21 @@ class SkiJump:
         v0 = data["v0"]
         alpha = data["alpha"]
         return SkiJump(v0, alpha)
-        # raise NotImplementedError()
 
     def landing(self, hill: Hill) -> float:
         """Returns the intersection of the trajectory and the hill."""
         # Work here in Step 1!
         # In which point x are the y values the same?
-        # Notes of trying to solve this without pen and paper...
         # hill.y(x) = self.y(x)
-        # TODO
-        # hill.offset + hill.slope*x = <do i have to write out eq for skijump here?>
-        raise NotImplementedError()
+        # ie. hill.offset + hill.slope*x = <eq for skijump.y>
+        # Solve second order quatratic that is obtained from the above
+        # Define new constants for easier notation
+        a = hill.offset
+        b = hill.slope - np.tan(SkiJump.alpha)
+        c = -g/(2*SkiJump.v0**2 * np.cos(SkiJump.alpha)**2)
+
+        return (-b + np.sqrt(4*a*c-b**2))/(2*a)
+
 
     def sample(self, hill: Hill, n: int) -> tuple[np.ndarray, np.ndarray]:
         """Discretize trajectory with `n` points until the landing.
