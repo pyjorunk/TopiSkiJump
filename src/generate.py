@@ -86,6 +86,11 @@ class SkiJump:
     def landing(self, hill: Hill) -> float:
         """Returns the intersection of the trajectory and the hill."""
         # Work here in Step 1!
+        # In which point x are the y values the same?
+        # Notes of trying to solve this without pen and paper...
+        # hill.y(x) = self.y(x)
+        # TODO
+        # hill.offset + hill.slope*x = <do i have to write out eq for skijump here?>
         raise NotImplementedError()
 
     def sample(self, hill: Hill, n: int) -> tuple[np.ndarray, np.ndarray]:
