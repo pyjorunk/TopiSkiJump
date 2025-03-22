@@ -9,11 +9,11 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5.4.0
       - name: Setup virtual envrionment
-        run: $ python -m venv env
+        run: python -m venv env
       - name: Activate virtual env
-        run: $ . env/bin/activate
+        run: . env/bin/activate
       - name: install required packages
-        run: $ pip install -r requirements.txt
+        run: pip install -r requirements.txt
       - name: Run unit test
-        run: $ pytest tests/
+        run: pytest tests/
         
