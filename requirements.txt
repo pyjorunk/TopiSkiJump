@@ -9,3 +9,4 @@ pytest
 # not the users. In this case the users will simply assume that your program is doing what it is promising
 # and that you did write sufficient unit tests to prove it. Users live in the real live and not in a
 # test environment.
+pre-commit
